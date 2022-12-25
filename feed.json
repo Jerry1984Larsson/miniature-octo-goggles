@@ -1,0 +1,41 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Thrymheim Web",
+    "description": "",
+    "home_page_url": "https://github.com/Jerry1984Larsson/miniature-octo-goggles",
+    "feed_url": "https://github.com/Jerry1984Larsson/miniature-octo-goggles/feed.json",
+    "user_comment": "",
+    "author": {
+        "name": "Larsson"
+    },
+    "items": [
+        {
+            "id": "https://github.com/Jerry1984Larsson/miniature-octo-goggles/index/",
+            "url": "https://github.com/Jerry1984Larsson/miniature-octo-goggles/index/",
+            "title": "# Index",
+            "summary": "“page1” “page2”",
+            "content_html": "<ul>\n<li><a href=\"docs/post1\">“page1”</a></li>\n<li><a href=\"docs/post2\">“page2”</a></li>\n</ul>\n",
+            "author": {
+                "name": "Larsson"
+            },
+            "tags": [
+            ],
+            "date_published": "2022-08-13T15:12:28+02:00",
+            "date_modified": "2022-08-13T15:13:29+02:00"
+        },
+        {
+            "id": "https://github.com/Jerry1984Larsson/miniature-octo-goggles/misc-notes/",
+            "url": "https://github.com/Jerry1984Larsson/miniature-octo-goggles/misc-notes/",
+            "title": "Misc Notes",
+            "summary": "tags: #Icon [[icon.md]] Here&#39;s the similar method I&#39;ve been using for years which has been working great for clearing the cache manually, without restarting the system. Manually Clear Icon &amp; Thumbnail Cache : Run the &quot;Command Prompt&quot; as administrator (in the [Search box], type &quot;cmd&quot;). Paste each command&hellip;",
+            "content_html": "<hr>\n<p>tags:</p>\n<ul>\n<li>Misc</li>\n<li>Notes</li>\n</ul>\n<hr>\n<h1 id=\"misc-notes\">Misc Notes</h1>\n<h2 id=\"220628\">220628</h2>\n<ul>\n<li>sachiowo</li>\n<li>senzawa\n@sensenzawa</li>\n<li>JAV Titles\n@JAVdottxt</li>\n<li>Shachimu</li>\n</ul>\n<p>#Icon</p>\n<p>[[icon.md]]</p>\n<h2 id=\"rebuild-icon-cache---oldschool\">Rebuild Icon Cache - Oldschool</h2>\n<pre><code class=\"language-md\">Here&#39;s the similar method I&#39;ve been using for years which has been working great for clearing the cache manually, without restarting the system.\n\nManually Clear Icon &amp; Thumbnail Cache :\n\nRun the &quot;Command Prompt&quot; as administrator (in the [Search box], type &quot;cmd&quot;).\nPaste each command line -separately- and validate with [Enter] except the last one.\nCode:\ncd /d %userprofile%\\AppData\\Local\\Microsoft\\Windows\\Explorer\nattrib –h iconcache*\\*.db\ndel iconcache*\\_.db\nYou will have to end the Windows Explorer process before validating this last command.\nMake sure all File Explorer windows are closed, and open the &quot;Task Manager&quot; by pressing [Ctrl+Shift+Esc] simultaneously.\nScroll down the list until you reach all [Windows Explorer] process.\nSelect it/them, right-click and choose [End Task] : &quot;It&#39;s going to be all dark!&quot;\nClose the &quot;Task Manager&quot;.\nNow validate the last del iconcache\\_\\_.db command, then close the &quot;Command Prompt&quot; window.\nAccess the &quot;Task Manager&quot; again with [Ctrl+Shift+Esc] keys, click on [File], [Run new task] then type &quot;explorer.exe&quot; and [Enter].\nLight&#39;s back on ! Close the &quot;Task Manager&quot;.\n\nSystem icons are updated, but I&#39;m not sure it includes the full windows app icons.\nMost 3rd party apps seem to have their own icon cache file stored separately, and not necessarily next to their .exe file.\n</code></pre>\n<p>——————————–REGEX———————-\nRemove after char: <code>(?-s)(?&lt;=\\&lt;char&gt;).*</code></p>\n<p><code>Get-AppxPackage -Name &quot;*media*&quot; -AllUsers | Remove-AppxPackage -AllUsers</code></p>\n<p><code>Get-AppxPackage *WindowsStore* -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register $($_.InstallLocation)\\AppXManifest.xml}</code></p>\n<p><code>unblock-file -path &quot;full path of blocked file&quot;</code></p>\n<p><code>get-childitem &quot;full path of folder&quot; | unblock-file</code></p>\n<hr>\n<h2 id=\"remove-special-chars\">Remove special chars</h2>\n<blockquote>\n<p>koikatu0060555（椎名_紅葉）（作者：みそおでん）.png</p>\n</blockquote>\n<p>Using preg replace:</p>\n<p><code>$target_file = $target_dir . preg_replace(&quot;/[^a-z0-9\\_\\-\\.]/i&quot;, &#39;&#39;, basename($_FILES[&#39;fileToUpload&#39;][&quot;name&quot;]));</code>\nThis will remove all characters that’s not a letter (a-z), a number (0-9) or a dash, underscore or dot (we want to keep the file extension). The i flag in the end makes the match case insensitive.</p>\n<p><strong>Update</strong>\nTo make the expression shorter, you can replace <code>a-z0-9\\_-part</code> with the word token <code>\\w</code>.\nThe pattern would then be: <code>[^\\w\\-\\.]</code>. Here we don’t need the i flag, since the word token handles that for us.</p>\n<pre><code class=\"language-powershell\">Get-ChildItem -Path C:\\Users\\jdoe\\Desktop\\test *.txt |\n  ForEach {\n      $ofn = $_.name; $nfn= $_.Name.Replace(&quot;07202016&quot;,&quot;&quot;)\n       rename-item $ofn $nfn\n   }\n</code></pre>\n<h2 id=\"reactnode-update-project\">React/Node update project</h2>\n<p><code>yarn upgrade &amp;&amp; npx syncyarnlock --keepPrefix --save &amp;&amp; yarn install</code></p>\n<h2 id=\"docker-for-standardnotes\">Docker for standardnotes</h2>\n<p><code>docker run -d -p 3001:3001 --env-file=.env.sample standardnotes/web:stable</code></p>\n<p><code>docker pull standardnotes/web</code></p>\n<p><code>docker pull kennethreitz/httpbin</code></p>\n<p><code>docker run -p 80:80 kennethreitz/httpbin</code></p>\n<h2 id=\"install-error\">Install error</h2>\n<p>Security Update for SQL Server 2019 RTM GDR (KB5014356)\nInstall error - 0x8024000b</p>\n<h2 id=\"sql-server-2019\">SQL Server 2019</h2>\n<p>Install error - 0x8024000b</p>\n<p>We have below workarounds:</p>\n<p>On existing machines, where SSMS 18.3 or lower is already installed.\nUninstall SQL Server 2012 Native Client which got installed with SSMS. Then install SQL Server 2019. OR\nInstead of running setup from mounted ISO, copy the content of media to a local drive or a network share and start setup.exe from those locations.</p>\n<p>On new machines, where SSMS is NOT installed.\nFirst install SQL Server 2019 and then install SSMS 18.3 OR\nInstall version of SSMS greater than 18.3.1 and then install SQL Server 2019</p>\n<h2 id=\"nuget-cli\">Nuget CLI</h2>\n<h3 id=\"restore-packages-for-a-solution-file\">Restore packages for a solution file</h3>\n<p>nuget restore a.sln</p>\n<h3 id=\"restore-packages-for-a-solution-file-using-msbuild-version-140-to-load-the-solution-and-its-projects\">Restore packages for a solution file, using MSBuild version 14.0 to load the solution and its project(s)</h3>\n<p>nuget restore a.sln -MSBuildVersion 14</p>\n<h3 id=\"restore-packages-for-a-projects-packagesconfig-file-with-the-packages-folder-at-the-parent\">Restore packages for a project’s packages.config file, with the packages folder at the parent</h3>\n<p>nuget restore proj1\\packages.config -PackagesDirectory ..\\packages</p>\n<h3 id=\"restore-packages-for-the-solution-in-the-current-folder-specifying-package-sources\">Restore packages for the solution in the current folder, specifying package sources</h3>\n<p>nuget restore -source “<a href=\"https://api.nuget.org/v3/index.json;https://www.myget.org/F/nuget&quot;\">https://api.nuget.org/v3/index.json;https://www.myget.org/F/nuget&quot;</a></p>\n",
+            "author": {
+                "name": "Larsson"
+            },
+            "tags": [
+            ],
+            "date_published": "2022-07-18T18:06:42+02:00",
+            "date_modified": "2022-08-13T14:56:01+02:00"
+        }
+    ]
+}
